@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PokMarkT — Pokémon TCG Marketplace</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #f4f6f8;
+        color: #222;
+    }
+
+    header {
+        background: #e33535;
+        color: white;
+        padding: 18px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 18px;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #ffcb05;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #e33535, #ffcb05);
+        color: white;
+        text-align: center;
+        padding: 55px 20px;
+    }
+
+    .hero h2 {
+        font-size: 38px;
+        margin-bottom: 12px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .section-title {
+        margin: 35px 0 20px;
+        font-size: 26px;
+    }
+
+    .trusted {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 35px;
+    }
+
+    .trusted-box {
+        background: white;
+        padding: 18px;
+        border-radius: 12px;
+        flex: 1;
+        min-width: 240px;
+        box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .trusted-box h3 {
+        margin-bottom: 8px;
+    }
+
+    .trusted-box p {
+        line-height: 1.5;
+    }
+
+    .badge {
+        display: inline-block;
+        background: #e8f7e8;
+        color: #197a19;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,.1);
+        transition: .2s;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 290px;
+        object-fit: contain;
+        background: #eee;
+    }
+
+    .card-content {
+        padding: 16px;
+    }
+
+    .card-content h3 {
+        margin-bottom: 7px;
+    }
+
+    .price {
+        font-size: 21px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .condition {
+        color: #666;
+        font-size: 13px;
+    }
+
+    .market {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    .buy {
+        display: block;
+        background: #e33535;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        padding: 11px;
+        border-radius: 8px;
+        margin-top: 14px;
+        font-weight: bold;
+    }
+
+    .buy:hover {
+        background: #bd2525;
+    }
+
+    .notice {
+        background: #fff8d9;
+        border-left: 5px solid #ffcb05;
+        padding: 18px;
+        border-radius: 8px;
+        margin: 35px 0;
+        line-height: 1.5;
+    }
+
+    /* GUIDE SECTION */
+
+    .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+    }
+
+    .guide-box {
+        background: white;
+        padding: 22px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0,0,0,.08);
+        border-top: 4px solid #e33535;
+    }
+
+    .guide-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: #e33535;
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .guide-box h3 {
+        margin-bottom: 8px;
+    }
+
+    .guide-box p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .red-flag {
+        background: #ffeaea;
+        border-left: 5px solid #e33535;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 25px;
+        line-height: 1.6;
+    }
+
+    .red-flag h3 {
+        color: #c62828;
+        margin-bottom: 8px;
+    }
+
+    /* ABOUT SECTION */
+
+    .about-box {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0,0,0,.08);
+        line-height: 1.7;
+    }
+
+    .about-box p {
+        margin-bottom: 15px;
+        color: #444;
+    }
+
+    .about-list {
+        padding-left: 25px;
+        margin: 15px 0;
+        line-height: 2;
+    }
+
+    /* FOOTER */
+
+    footer {
+        background: #222;
+        color: white;
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+    }
+
+    footer p {
+        line-height: 1.5;
+    }
+
+    @media(max-width:600px) {
+
+        .hero h2 {
+            font-size: 29px;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        nav a {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+
+        .card img {
+            height: 250px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <h1> PokMarkT (Tugas Informatika SMAN 3 Bandung)</h1>
+
+    <nav>
+        <a href="#cards">Cards</a>
+        <a href="#marketplaces">Marketplace</a>
+        <a href="indexpokedex.html" target="konten">PokeDex</a>
+        <a href="HOWTOPLAY101.html" target="konten">TCG Guide</a>
+        <a href="ABOUTPokMarkT.html" target="konten">About</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <h2>Find Your Pokémon Cards</h2>
+
+    <p>
+        Temukan kartu Pokémon melalui marketplace yang sudah dikenal.
+    </p>
+
+</section>
+
+
+<main>
+
+
+<!-- MARKETPLACE -->
+
+<section id="marketplaces">
+
+    <h2 class="section-title">
+        TRUSTED MARKETPLACE
+    </h2>
+
+    <div class="trusted">
+
+        <div class="trusted-box">
+
+            <h3>TCGplayer</h3>
+
+            <p>
+                Marketplace khusus trading card game dengan
+                banyak seller Pokémon TCG.
+            </p>
+
+            <span class="badge">
+                Established Marketplace
+            </span>
+
+            <a
+                class="buy"
+                href="https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Buka TCGplayer
+            </a>
+
+        </div>
+
+
+        <div class="trusted-box">
+
+            <h3>eBay Authenticity Guarantee</h3>
+
+            <p>
+                Untuk listing yang memenuhi syarat,
+                eBay menyediakan proses autentikasi
+                untuk kategori kartu tertentu.
+            </p>
+
+            <span class="badge">
+                Authentication Available
+            </span>
+
+            <a
+                class="buy"
+                href="https://www.ebay.com/authenticity-guarantee/tradingcards"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Authenticity Guarantee
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WARNING -->
+
+<div class="notice">
+
+    <strong> Penting:</strong>
+
+    Website ini bukan marketplace dan tidak menjual kartu Pokémon.
+
+    Kami hanya menyediakan informasi dan tautan menuju marketplace
+    pihak ketiga.
+
+    Kami juga tidak dapat menjamin bahwa setiap kartu atau seller
+    di marketplace tersebut terpercaya.
+
+    Selalu lakukan pengecekan sebelum melakukan pembelian.
+
+</div>
+
+
+<!-- CARDS -->
+
+<section id="cards">
+
+    <h2 class="section-title">
+         Contoh Listing
+    </h2>
+
+    <div class="cards">
+
+        <!-- CARD 1 -->
+
+        <article class="card">
+
+            <img
+                src="https://images.pokemontcg.io/base1/4.png"
+                alt="Charizard Base Set"
+            >
+
+            <div class="card-content">
+
+                <h3>Charizard — Base Set</h3>
+
+                <p class="condition">
+                    Individual Card
+                </p>
+
+                <p class="market">
+                    Marketplace:
+                    <strong>TCGplayer</strong>
+                </p>
+
+                <p class="price">
+                    Lihat harga terbaru
+                </p>
+
+                <a
+                    class="buy"
+                    href="https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=charizard&view=grid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Lihat Listing
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 2 -->
+
+        <article class="card">
+
+            <img
+                src="https://tcgplayer-cdn.tcgplayer.com/product/42402_in_1000x1000.jpg"
+                alt="Pikachu Pokémon Card"
+            >
+
+            <div class="card-content">
+
+                <h3>Pikachu</h3>
+
+                <p class="condition">
+                    Individual Card
+                </p>
+
+                <p class="market">
+                    Marketplace:
+                    <strong>TCGplayer</strong>
+                </p>
+
+                <p class="price">
+                    Lihat harga terbaru
+                </p>
+
+                <a
+                    class="buy"
+                    href="https://www.tcgplayer.com/search/pokemon/product?q=pikachu&view=grid&productLineName=pokemon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Lihat Listing
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+    <div class="red-flag">
+
+        <h3>WASPADA</h3>
+
+        <ul class="about-list">
+
+            <li>Harga jauh di bawah harga pasar tanpa alasan yang jelas.</li>
+
+            <li>Seller memiliki sedikit atau tidak memiliki review.</li>
+
+            <li>Foto produk terlihat dicuri atau tidak jelas.</li>
+
+            <li>Seller meminta pembayaran di luar marketplace.</li>
+
+            <li>Seller menolak memberikan informasi atau foto tambahan.</li>
+
+            <li>Deskripsi produk terlalu bagus tetapi tidak memberikan detail.</li>
+
+            <li>Seller mencoba membuat pembeli terburu-buru.</li>
+
+        </ul>
+
+        <strong>
+            Jika sebuah transaksi terasa mencurigakan, lebih baik
+            tidak membelinya.
+        </strong>
+
+    </div>
+
+</section>
+
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        <strong>PokMarkT</strong> — Pokémon TCG Marketplace Directory
+    </p>
+
+    <p style="margin-top:8px;font-size:13px;">
+
+        Tugas Informatika SMAN 3 Bandung 2026.
+
+Disclaimer: This website is a non-commercial student project created solely for educational purposes. All Pokémon images, names, and related assets are the intellectual property of Nintendo, Game Freak, and The Pokémon Company. No copyright infringement is intended.
+
+        Marketplace Daffa Nuzul Akaba XI-9
+        @daffaakaba82@gmail.com
+
+    </p>
+
+</footer>
+
+</body>
+</html>
