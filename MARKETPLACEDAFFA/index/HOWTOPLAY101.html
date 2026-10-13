@@ -1,0 +1,673 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>TCG Guide — PokMarkT</title>  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #e53935, #ff7043, #ffffff);
+      color: #222;
+    }
+
+    /* ================= HEADER ================= */
+
+    .header {
+      background: linear-gradient(90deg, #c90000, #ef2929, #c90000);
+      color: white;
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .pokeball {
+      width: 45px;
+      height: 45px;
+      border: 4px solid #222;
+      border-radius: 50%;
+      position: relative;
+      background: linear-gradient(
+        to bottom,
+        #ff3030 0%,
+        #ff3030 44%,
+        #222 44%,
+        #222 56%,
+        white 56%,
+        white 100%
+      );
+      flex-shrink: 0;
+    }
+
+    .pokeball::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: white;
+      border: 3px solid #222;
+      border-radius: 50%;
+      top: 9px;
+      left: 9px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .header p {
+      margin: 3px 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+
+    /* ================= MAIN ================= */
+
+    .container {
+      width: 90%;
+      max-width: 1050px;
+      margin: 30px auto;
+    }
+
+    .intro {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      border: 5px solid #ffcc00;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      margin-bottom: 25px;
+    }
+
+    .intro h2 {
+      color: #c90000;
+      font-size: 30px;
+      margin-top: 0;
+    }
+
+    .intro p {
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+
+    /* ================= GUIDE CARDS ================= */
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .guide-card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      padding: 25px;
+      border-left: 7px solid #ef2929;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .guide-card h3 {
+      margin-top: 0;
+      color: #c90000;
+      font-size: 22px;
+    }
+
+    .guide-card p {
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .guide-card ul {
+      padding-left: 22px;
+    }
+
+    .guide-card li {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+
+    /* ================= STEPS ================= */
+
+    .steps {
+      margin-top: 25px;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      border: 4px solid #ff7043;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .steps h2 {
+      color: #e65100;
+      margin-top: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 15px;
+      margin: 18px 0;
+      align-items: flex-start;
+    }
+
+    .number {
+      min-width: 38px;
+      height: 38px;
+      background: #c90000;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .step h4 {
+      margin: 0 0 5px;
+      color: #333;
+    }
+
+    .step p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+
+    /* ================= RARITY ================= */
+
+    .rarity {
+      margin-top: 25px;
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .rarity h2 {
+      color: #c90000;
+      margin-top: 0;
+    }
+
+    .rarity-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .rarity-table th,
+    .rarity-table td {
+      padding: 13px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .rarity-table th {
+      background: #c90000;
+      color: white;
+    }
+
+    .rarity-table tr:nth-child(even) {
+      background: #fff3e0;
+    }
+
+
+    /* ================= TIPS ================= */
+
+    .tips {
+      margin-top: 25px;
+      background: #fff3e0;
+      border-left: 7px solid #ff9800;
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .tips h2 {
+      color: #e65100;
+      margin-top: 0;
+    }
+
+    .tips li {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+
+    /* ================= YOUTUBE ================= */
+
+    .youtube {
+      margin-top: 30px;
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .youtube h2 {
+      color: #c90000;
+      margin-top: 0;
+    }
+
+    .video {
+      margin: 18px 0;
+      padding: 18px;
+      background: #f5f5f5;
+      border-radius: 12px;
+      border-left: 5px solid #ff3030;
+    }
+
+    .video h3 {
+      margin-top: 0;
+    }
+
+    .video a {
+      color: #d00000;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .video a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    .footer {
+      margin-top: 35px;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 17px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 700px) {
+
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 94%;
+      }
+
+      .header {
+        padding: 15px 20px;
+      }
+
+      .header h1 {
+        font-size: 23px;
+      }
+
+      .intro,
+      .steps,
+      .rarity,
+      .youtube {
+        padding: 22px;
+      }
+
+      .rarity-table {
+        font-size: 14px;
+      }
+    }
+  </style></head><body>  <!-- HEADER -->  <header class="header"><div class="pokeball"></div>
+
+<div>
+  <h1>PokMarkT</h1>
+  <p>Pokémon TCG Guide</p>
+</div>
+
+  </header>  <!-- MAIN -->  <main class="container"><!-- INTRO -->
+
+<section class="intro">
+
+  <h2>Pokémon TCG Guide</h2>
+
+  <p>
+    Pokémon Trading Card Game (TCG) adalah permainan kartu strategi
+    yang menggunakan Pokémon sebagai karakter utama. Pemain
+    menggunakan kartu Pokémon, Trainer, dan Energy untuk bertarung
+    melawan lawan.
+  </p>
+
+  <p>
+    Panduan ini dibuat untuk membantu pemula memahami dasar-dasar
+    Pokémon TCG sebelum mulai bermain atau membeli kartu.
+  </p>
+
+</section>
+
+
+<!-- BASIC COMPONENTS -->
+
+<section class="guide-grid">
+
+  <div class="guide-card">
+
+    <h3>Pokémon Cards</h3>
+
+    <p>
+      Kartu Pokémon digunakan sebagai Pokémon yang bertarung
+      di arena. Setiap Pokémon memiliki HP, serangan, tipe,
+      dan informasi lainnya.
+    </p>
+
+    <ul>
+      <li>Basic Pokémon</li>
+      <li>Stage 1 Pokémon</li>
+      <li>Stage 2 Pokémon</li>
+      <li>Pokémon ex</li>
+    </ul>
+
+  </div>
+
+
+  <div class="guide-card">
+
+    <h3> Energy Cards</h3>
+
+    <p>
+      Energy digunakan untuk membayar biaya serangan Pokémon.
+      Jenis Energy biasanya berkaitan dengan tipe Pokémon tertentu.
+    </p>
+
+    <ul>
+      <li>Basic Energy</li>
+      <li>Special Energy</li>
+      <li>Energy Attachment</li>
+    </ul>
+
+  </div>
+
+
+  <div class="guide-card">
+
+    <h3> Trainer Cards</h3>
+
+    <p>
+      Trainer Cards memberikan berbagai efek yang membantu
+      pemain selama pertandingan.
+    </p>
+
+    <ul>
+      <li>Item</li>
+      <li>Supporter</li>
+      <li>Stadium</li>
+      <li>Tool</li>
+    </ul>
+
+  </div>
+
+
+  <div class="guide-card">
+
+    <h3> Prize Cards</h3>
+
+    <p>
+      Prize Cards diletakkan secara tertutup di awal pertandingan.
+      Pemain biasanya mengambil Prize Card ketika berhasil
+      Knock Out Pokémon lawan.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- HOW TO PLAY -->
+
+<section class="steps">
+
+  <h2>Cara Bermain Secara Singkat</h2>
+
+  <div class="step">
+
+    <div class="number">1</div>
+
+    <div>
+      <h4>Siapkan Deck</h4>
+      <p>
+        Gunakan deck yang terdiri dari 60 kartu sesuai aturan
+        Pokémon TCG.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="number">2</div>
+
+    <div>
+      <h4>Mulai Pertandingan</h4>
+      <p>
+        Kedua pemain mengambil kartu awal dan menempatkan
+        Pokémon Basic sebagai Active Pokémon jika memungkinkan.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="number">3</div>
+
+    <div>
+      <h4>Ambil Kartu</h4>
+      <p>
+        Pada awal giliran, pemain mengambil satu kartu
+        dari deck.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="number">4</div>
+
+    <div>
+      <h4>Mainkan Kartu</h4>
+      <p>
+        Pemain dapat memainkan Pokémon, Energy, Trainer,
+        dan melakukan berbagai aksi sesuai aturan.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="number">5</div>
+
+    <div>
+      <h4>Serang</h4>
+      <p>
+        Jika syarat serangan terpenuhi, Active Pokémon dapat
+        menyerang Pokémon lawan.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="number">6</div>
+
+    <div>
+      <h4>Ambil Prize Card</h4>
+      <p>
+        Jika Pokémon lawan terkena Knock Out, pemain dapat
+        mengambil Prize Card sesuai aturan.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RARITY -->
+
+<section class="rarity">
+
+  <h2>Mengenal Rarity</h2>
+
+  <p>
+    Rarity menunjukkan tingkat kelangkaan sebuah kartu.
+    Simbol dan kategori rarity dapat berbeda tergantung
+    pada set atau era Pokémon TCG.
+  </p>
+
+  <table class="rarity-table">
+
+    <tr>
+      <th>Rarity</th>
+      <th>Penjelasan</th>
+    </tr>
+
+    <tr>
+      <td>Common</td>
+      <td>Kartu dengan tingkat kelangkaan umum.</td>
+    </tr>
+
+    <tr>
+      <td>Uncommon</td>
+      <td>Lebih jarang ditemukan dibanding Common.</td>
+    </tr>
+
+    <tr>
+      <td>Rare</td>
+      <td>Kartu dengan tingkat kelangkaan lebih tinggi.</td>
+    </tr>
+
+    <tr>
+      <td>Double Rare</td>
+      <td>Umumnya digunakan pada Pokémon ex tertentu.</td>
+    </tr>
+
+    <tr>
+      <td>Illustration Rare</td>
+      <td>Kartu dengan artwork khusus yang menonjolkan Pokémon.</td>
+    </tr>
+
+    <tr>
+      <td>Special Illustration Rare</td>
+      <td>Kartu dengan artwork khusus dan tingkat kelangkaan tinggi.</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+<!-- TIPS -->
+
+<section class="tips">
+
+  <h2> Tips untuk Pemula</h2>
+
+  <ul>
+
+    <li>
+      Pelajari aturan dasar sebelum membeli banyak kartu.
+    </li>
+
+    <li>
+      Jangan hanya melihat rarity ketika menentukan nilai sebuah kartu.
+    </li>
+
+    <li>
+      Perhatikan kondisi kartu, bahasa, set, dan nomor kartu.
+    </li>
+
+    <li>
+      Bandingkan harga dari beberapa marketplace sebelum membeli.
+    </li>
+
+    <li>
+      Pastikan seller memiliki reputasi dan review yang baik.
+    </li>
+
+    <li>
+      Simpan kartu dengan sleeve atau perlindungan yang sesuai
+      jika ingin menjaga kondisinya.
+    </li>
+
+  </ul>
+
+</section>
+
+
+<!-- YOUTUBE -->
+
+<section class="youtube">
+
+  <h2>▶ Learn How to Play Pokémon TCG</h2>
+
+  <p>
+    Masih bingung cara bermain Pokémon TCG?
+    Berikut beberapa video yang dapat membantu kamu mempelajari
+    dasar permainan.
+  </p>
+
+
+  <div class="video">
+
+    <h3>Video 1 — Pokémon TCG Basics</h3>
+
+    <a
+      href="https://www.youtube.com/results?search_query=Pokemon+TCG+how+to+play+beginner"
+      target="_blank">
+      Tonton di YouTube →
+    </a>
+
+  </div>
+
+
+  <div class="video">
+
+    <h3>Video 2 — How to Play Pokémon TCG</h3>
+
+    <a
+      href="https://www.youtube.com/results?search_query=Pokemon+Trading+Card+Game+how+to+play"
+      target="_blank">
+      Tonton di YouTube →
+    </a>
+
+  </div>
+
+
+  <div class="video">
+
+    <h3>Video 3 — Pokémon TCG Tutorial for Beginners</h3>
+
+    <a
+      href="https://www.youtube.com/results?search_query=Pokemon+TCG+tutorial+for+beginners"
+      target="_blank">
+      Tonton di YouTube →
+    </a>
+
+  </div>
+
+</section>
+
+  </main>  <!-- FOOTER -->  <footer class="footer">
+    Tugas INFORMATIKA marketplace SMAN 3 Bandung.
+  </footer></body>
+</html>
