@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>About — PokMarkT</title>  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #e53935, #ff7043, #fff);
+      color: #222;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #c90000, #ef2929, #c90000);
+      color: white;
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Pokéball */
+    .pokeball {
+      width: 45px;
+      height: 45px;
+      border: 4px solid #222;
+      border-radius: 50%;
+      position: relative;
+      background: linear-gradient(
+        to bottom,
+        #ff3030 0%,
+        #ff3030 44%,
+        #222 44%,
+        #222 56%,
+        white 56%,
+        white 100%
+      );
+      flex-shrink: 0;
+    }
+
+    .pokeball::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: white;
+      border: 3px solid #222;
+      border-radius: 50%;
+      top: 9px;
+      left: 9px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .header p {
+      margin: 3px 0 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    /* Main Content */
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 35px auto;
+      background: rgba(255,255,255,0.97);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      border: 5px solid #ffcc00;
+      flex: 1;
+    }
+
+    .section-title {
+      color: #c90000;
+      font-size: 30px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 4px solid #ff7043;
+      padding-bottom: 10px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      background: #fff3e0;
+      border-left: 6px solid #ff5722;
+      padding: 18px;
+      border-radius: 10px;
+      margin: 25px 0;
+    }
+
+    .highlight strong {
+      color: #c90000;
+    }
+
+    /* Tujuan */
+    .purpose {
+      margin-top: 30px;
+    }
+
+    .purpose h2 {
+      color: #e65100;
+      margin-bottom: 15px;
+    }
+
+    .purpose ul {
+      padding-left: 25px;
+    }
+
+    .purpose li {
+      margin: 12px 0;
+      line-height: 1.5;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      margin-top: 30px;
+      background: #eeeeee;
+      border-radius: 12px;
+      padding: 18px;
+      border: 2px solid #ccc;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .disclaimer strong {
+      color: #c90000;
+    }
+
+    /* Bottom Header */
+    .bottom-header {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.25);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 94%;
+        padding: 22px;
+        margin: 20px auto;
+      }
+
+      .header {
+        padding: 15px 20px;
+      }
+
+      .header h1 {
+        font-size: 23px;
+      }
+
+      .section-title {
+        font-size: 25px;
+      }
+    }
+  </style></head><body>  <!-- Header -->  <header class="header">
+    <div class="pokeball"></div><div>
+  <h1>PokMarkT</h1>
+  <p>Pokémon TCG Marketplace Directory</p>
+</div>
+
+  </header>  <!-- About Content -->  <main class="container"><h2 class="section-title">About PokMarkT</h2>
+
+<div class="content">
+
+  <p>
+  PokMarkT adalah sebuah website proyek tugas Informatika
+    yang dibuat sebagai direktori untuk membantu pengguna menemukan
+    marketplace yang menyediakan Pokémon Trading Card Game (TCG).
+  </p>
+
+  <div class="highlight">
+    <strong>Penting:</strong><br>
+    PokMarkT bukan marketplace resmi Pokémon dan tidak menjual
+    produk Pokémon secara langsung.
+  </div>
+
+  <p>
+    Website ini tidak menyimpan stok kartu, tidak menerima pembayaran,
+    tidak mengirim barang, dan tidak menjadi pihak dalam transaksi
+    antara pembeli dan seller.
+  </p>
+
+  <p>
+    Ketika pengguna menekan tombol
+    <strong>"Lihat Listing"</strong> atau
+    <strong>"Buka Marketplace"</strong>, pengguna akan diarahkan
+    ke website pihak ketiga. Transaksi selanjutnya dilakukan langsung
+    antara pengguna dengan marketplace atau seller tersebut.
+  </p>
+
+  <!-- Tujuan -->
+  <section class="purpose">
+
+    <h2>Tujuan PokMarkT</h2>
+
+    <ul>
+      <li>
+        Membantu pengguna menemukan marketplace Pokémon TCG.
+      </li>
+
+      <li>
+        Memberikan edukasi dasar mengenai keamanan pembelian online.
+      </li>
+
+      <li>
+        Mengingatkan pengguna agar melakukan riset sebelum membeli kartu.
+      </li>
+
+      <li>
+        Menunjukkan contoh kartu dan mengarahkan pengguna
+        ke marketplace terkait.
+      </li>
+    </ul>
+
+  </section>
+
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+
+    <strong>Disclaimer:</strong>
+    PokMarkTtidak menjamin keaslian, kondisi, harga,
+    ketersediaan, atau keamanan setiap produk dan seller
+    yang terdapat pada marketplace pihak ketiga.
+
+  </div>
+
+</div>
+
+  </main>  <!-- Bottom Header -->  <footer class="bottom-header">
+    Tugas INFORMATIKA marketplace SMAN 3 Bandung.
+  </footer></body>
+</html>
